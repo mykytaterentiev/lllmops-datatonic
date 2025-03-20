@@ -1,0 +1,32 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment directories
+venv/
+env/
+*.egg-info/
+.eggs/
+
+# Environment variable files (avoid committing secrets)
+.env
+
+# Logs
+*.log
+mlruns/
+
+# Build artifacts
+build/
+dist/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE/editor files
+.vscode/
+.idea/
+
+# Docker files
+docker-compose.yml

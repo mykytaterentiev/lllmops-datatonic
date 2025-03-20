@@ -1,0 +1,19 @@
+name: llmops_pipeline_env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - pip
+  - pip:
+      - google-cloud-aiplatform
+      - google-cloud-logging
+      - huggingface-hub
+      - rouge
+      - mlflow
+      - opentelemetry-api
+      - opentelemetry-sdk
+      - opentelemetry-exporter-cloud-trace
+      - python-dotenv
+      - streamlit
+      - plotly

@@ -1,0 +1,11 @@
+google-cloud-aiplatform
+google-cloud-logging
+huggingface-hub
+rouge
+mlflow
+opentelemetry-api
+opentelemetry-sdk
+opentelemetry-exporter-cloud-trace
+python-dotenv
+setuptools
+google-cloud-trace==1.16.1
