@@ -48,12 +48,13 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          gcloud builds submit --tag gcr.io/${{ secrets.GCP_PROJECT_ID }}/llmops-pipeline
+          gcloud builds submit --tag gcr.io/${{ secrets.GCP_PROJECT_ID }}/llmops-pipeline \
+            --project=${{ secrets.GCP_PROJECT_ID }} 
 
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy llmops-pipeline \
             --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/llmops-pipeline \
             --platform managed \
-            --region europe-west8 \
+            --region europe-west8 \  
             --allow-unauthenticated
