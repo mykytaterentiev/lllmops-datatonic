@@ -45,16 +45,22 @@ jobs:
         uses: google-github-actions/setup-gcloud@v1
         with:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
+          export_default_credentials: true 
 
-      - name: Build Docker Image
+      - name: Configure Docker for Artifact Registry
         run: |
-          gcloud builds submit --tag gcr.io/${{ secrets.GCP_PROJECT_ID }}/llmops-pipeline \
-            --project=${{ secrets.GCP_PROJECT_ID }} 
+          gcloud auth configure-docker europe-west8-docker.pkg.dev  # Replace with your region
+
+      - name: Build and Push Docker Image
+        run: |
+          gcloud builds submit \
+            --tag europe-west8-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/llmops-repo/llmops-pipeline \
+            --project=${{ secrets.GCP_PROJECT_ID }}
 
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy llmops-pipeline \
-            --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/llmops-pipeline \
+            --image europe-west8-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/llmops-repo/llmops-pipeline \
             --platform managed \
-            --region europe-west8 \  
+            --region europe-west8 \
             --allow-unauthenticated
