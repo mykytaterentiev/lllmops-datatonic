@@ -49,7 +49,7 @@ jobs:
 
       - name: Configure Docker for Artifact Registry
         run: |
-          gcloud auth configure-docker ${{ secrets.GCP_REGION }}-docker.pkg.dev  # e.g., "europe-west1"
+          gcloud auth configure-docker europe-west8-docker.pkg.dev 
 
       - name: Build and Push Docker Image to Artifact Registry
         run: |
